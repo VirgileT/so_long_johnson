@@ -12,7 +12,9 @@ PATH_SRCS 		+= srcs/
 #### SOURCES
 
 SRCS			+= so_long.c
-SRCS			+= check_map.c
+SRCS			+= moves.c
+SRCS			+= errors.c
+#SRCS			+= check_map.c
 #SRCS			+= free_destroy_close.c
 #SRCS			+= update_key_hook.c
 #SRCS			+= args_check.c

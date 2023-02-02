@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/15 13:39:09 by vtestut           #+#    #+#             */
-/*   Updated: 2023/01/20 19:10:46 by vtestut          ###   ########.fr       */
+/*   Updated: 2023/02/02 16:04:44 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,3 +107,20 @@ char	*ft_clear_buffer(char *buffer)
 	free(buffer);
 	return (next_line);
 }
+
+// int main()
+// {
+//     int     fd;
+//     char    *line;
+
+//     fd = open("song", O_RDONLY);
+//     while (1)
+//     {
+//         line = get_next_line(fd);
+//         printf("%s", line);
+//         if (line == NULL)
+//             break;
+//         free(line);
+//     }
+//     return (0);
+// }
