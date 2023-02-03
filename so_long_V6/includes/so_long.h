@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:12:47 by vtestut           #+#    #+#             */
-/*   Updated: 2023/02/02 20:28:42 by vtestut          ###   ########.fr       */
+/*   Updated: 2023/02/03 16:12:42 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@
 typedef struct	s_map {
 	unsigned int	nb_lines;
 	unsigned int	line_len;
+	unsigned int	map_rows;
+	unsigned int	map_columns;
 }				t_map;
 
 typedef struct	s_vars {
@@ -66,11 +68,12 @@ void	ft_move_left(t_vars *vars);
 void	ft_move_right(t_vars *vars);
 
 /*******************	ERRORS.C	************/
-bool	ft_check_map(int ac, char **av, t_vars *vars);
 bool	ft_invalid_arg_num(int ac);
 bool	ft_check_mapfile_format(char **av);
 void 	ft_exit(t_vars *vars);
-
+/*******************	MAP.C		************/
+bool	ft_check_param(int ac, char **av, t_vars *vars);
+void	ft_check_map(char **av, t_vars *vars);
 
 
 

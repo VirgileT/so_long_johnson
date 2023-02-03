@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:02:27 by vtestut           #+#    #+#             */
-/*   Updated: 2023/02/02 20:35:05 by vtestut          ###   ########.fr       */
+/*   Updated: 2023/02/03 16:14:06 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,38 +27,21 @@ t_vars ft_init_vars(t_vars *vars)
 	vars->height = 0;
 	vars->map_vars.line_len = 0;
 	vars->map_vars.nb_lines = 0;
+	vars->map_vars.map_rows = 0;
+	vars->map_vars.map_columns = 0;
 	return (*vars);
-}
-
-bool	ft_check_map(int ac, char **av, t_vars *vars)
-{
-	int map_fd;
-	(void)vars;
-	
-	// check du nombre d'arguments
-	if (!ft_invalid_arg_num(ac))
-		return (false);
-
-	// check du format .ber
-	if (!ft_check_mapfile_format(av))	
-		return (false);	
-	
-	// check du display de la map
-	map_fd = open(av[1], O_RDONLY);
-	
-	return true;
 }
 
 int	main(int ac, char **av)
 {
 	t_vars	vars;
+
+		// initialisation de la structure
+	ft_init_vars(&vars);
 	
 	// check la map (.ber / readable / wall etc / pathfinding)
-	if(!ft_check_map(ac, av, &vars))
+	if(!ft_check_param(ac, av, &vars))
 		exit(0);
-	
-	// initialisation de la structure
-	ft_init_vars(&vars);
 	
 	// initialisation de la mlx & de la fenetre							
 	vars.mlx = mlx_init();

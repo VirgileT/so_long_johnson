@@ -14,6 +14,7 @@ PATH_SRCS 		+= srcs/
 SRCS			+= so_long.c
 SRCS			+= moves.c
 SRCS			+= errors.c
+SRCS			+= map.c
 #SRCS			+= check_map.c
 #SRCS			+= free_destroy_close.c
 #SRCS			+= update_key_hook.c
@@ -50,7 +51,7 @@ HEADER			+= minilibx-linux/mlx_int.h
 #### COMPILATION
 
 CC				= clang
-CFLAGS			+= -Wall
+CFLAGS			+= -Wall #AJOUTER LES FLAGS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ifeq ($(everything),true)
 	CFLAGS		+= -Weverything
