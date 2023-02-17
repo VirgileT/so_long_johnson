@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 13:02:27 by vtestut           #+#    #+#             */
-/*   Updated: 2023/02/16 09:23:38 by vtestut          ###   ########.fr       */
+/*   Updated: 2023/02/17 20:06:23 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void ft_init_vars(t_vars *vars)
 {
-	vars->mlx = NULL;
+	// vars->mlx = NULL;
 	vars->win = NULL;
 	vars->hero = NULL;
 	vars->wall = NULL;

@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:38:44 by vtestut           #+#    #+#             */
-/*   Updated: 2023/02/16 17:26:28 by vtestut          ###   ########.fr       */
+/*   Updated: 2023/02/17 19:36:36 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void ft_move_up(t_vars *vars)
 			ft_put_sprite(vars, vars->hero, y, x);
 			ft_printf("moves = [%d]\n", vars->moves);
 		}
-		else if (ft_check_collect(vars) == 0)
+		if (ft_check_collect(vars) == 0)
 		{
 			ft_printf("You win ! moves to win : %d. Can you do better ?\n", vars->moves);
 			ft_close_and_free(vars);
@@ -54,19 +54,18 @@ void ft_move_down(t_vars *vars)
 	{
 		if (vars->map_vars.map[y + 1][x] != 'E')
 		{
-			vars->map_vars.map[y + 1][x] = *vars->hero;
-			vars->map_vars.map[y][x] = *vars->floor;
+			vars->map_vars.map[y + 1][x] = 'P';
+			vars->map_vars.map[y][x] = '0';
 			vars->moves++;
+			ft_put_sprite(vars, vars->hero, y + 1, x);
+			ft_put_sprite(vars, vars->hero, y, x);
 			ft_printf("moves = [%d]\n", vars->moves);
 		}
-		else
+		if (ft_check_collect(vars) == 0)
 		{
-			if (ft_check_collect(vars) == 0)
-			{
-				ft_printf("You win ! moves to win : %d. Can you do better ?\n",
-					vars->moves);
-				ft_close_and_free(vars);
-			}
+			ft_printf("You win ! moves to win : %d. Can you do better ?\n",
+				vars->moves);
+			ft_close_and_free(vars);
 		}
 	}
 }
@@ -82,19 +81,18 @@ void ft_move_left(t_vars *vars)
 	{
 		if (vars->map_vars.map[y][x - 1] != 'E')
 		{
-			vars->map_vars.map[y][x - 1] = *vars->hero;
-			vars->map_vars.map[y][x] = *vars->floor;
+			vars->map_vars.map[y][x - 1] = 'P';
+			vars->map_vars.map[y][x] = '0';
 			vars->moves++;
+			ft_put_sprite(vars, vars->hero, y, x - 1);
+			ft_put_sprite(vars, vars->hero, y, x);
 			ft_printf("moves = [%d]\n", vars->moves);
 		}
-		else
+		if (ft_check_collect(vars) == 0)
 		{
-			if (ft_check_collect(vars) == 0)
-			{
-				ft_printf("You win ! moves to win : %d. Can you do better ?\n",
-					vars->moves);
-				ft_close_and_free(vars);
-			}
+			ft_printf("You win ! moves to win : %d. Can you do better ?\n",
+				vars->moves);
+			ft_close_and_free(vars);
 		}
 	}
 }
@@ -110,22 +108,22 @@ void ft_move_right(t_vars *vars)
 	{
 		if (vars->map_vars.map[y][x + 1] != 'E')
 		{
-			vars->map_vars.map[y][x + 1] = *vars->hero;
-			vars->map_vars.map[y][x] = *vars->floor;
+			vars->map_vars.map[y][x + 1] = 'P';
+			vars->map_vars.map[y][x] = '0';
 			vars->moves++;
+			ft_put_sprite(vars, vars->hero, y, x + 1);
+			ft_put_sprite(vars, vars->hero, y, x);
 			ft_printf("moves = [%d]\n", vars->moves);
 		}
-		else
+		if (ft_check_collect(vars) == 0)
 		{
-			if (ft_check_collect(vars) == 0)
-			{
-				ft_printf("You win ! moves to win : %d. Can you do better ?\n",
-					vars->moves);
-				ft_close_and_free(vars);
-			}
+			ft_printf("You win ! moves to win : %d. Can you do better ?\n",
+				vars->moves);
+			ft_close_and_free(vars);
 		}
 	}
 }
+
 
 int ft_hook_events(int keycode, t_vars *vars)
 {
