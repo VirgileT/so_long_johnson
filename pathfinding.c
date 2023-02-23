@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/14 05:29:53 by vtestut           #+#    #+#             */
-/*   Updated: 2023/02/23 15:40:24 by vtestut          ###   ########.fr       */
+/*   Updated: 2023/02/23 17:59:19 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ bool	ft_pathfinding(t_vars *vars)
 	ft_backtracking(vars, x, y);
 	if (is_finishable(vars) == false)
 	{
-		ft_printf("ERROR : Map can't be finish\n");
-		return (false);
+		ft_error("Map can't be finish");
+		ft_quit(vars);
 	}
 	return (true);
 }

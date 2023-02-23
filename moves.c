@@ -6,7 +6,7 @@
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 14:38:44 by vtestut           #+#    #+#             */
-/*   Updated: 2023/02/23 15:40:31 by vtestut          ###   ########.fr       */
+/*   Updated: 2023/02/23 16:43:31 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ void	ft_move_right(t_vars *vars)
 	}
 }
 
-// ft_printf("key = [%d]\n", keycode);
 int	ft_hook_events(int keycode, t_vars *vars)
 {
 	if (keycode == 65307)

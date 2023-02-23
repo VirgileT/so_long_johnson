@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map.c                                              :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/03 14:24:32 by vtestut           #+#    #+#             */
-/*   Updated: 2023/02/23 15:40:40 by vtestut          ###   ########.fr       */
+/*   Updated: 2023/02/23 17:59:19 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ bool	ft_check_map(char **av, t_vars *vars)
 	if (read_return == read_s)
 		return (ft_error("Map too big."), false);
 	full[read_return] = '\0';
-	if (!(ft_check_map2(full, read_return)))
+	if (!(ft_check_map2(full, read_return, vars)))
 		return (false);
 	vars->map_vars.map = ft_split(full, '\n');
 	vars->map_vars.cloned_map = ft_split(full, '\n');
@@ -102,14 +102,17 @@ bool	ft_check_content(t_vars *vars)
 		while (vars->map_vars.map[i][j] != '\0')
 		{
 			if (ft_strchr("CPE01", vars->map_vars.map[i][j]) == NULL)
-				return (ft_error("None valide char in map file"), false);
+			{
+				ft_error("None valide char in map file");
+				ft_quit(vars);
+			}
 			j++;
 		}
 		i++;
 	}
 	ft_check_content2(vars);
 	if (!ft_check_content3(vars))
-		return (false);
+		ft_quit(vars);
 	return (true);
 }
 
@@ -120,9 +123,9 @@ bool	ft_check_param(int ac, char **av, t_vars *vars)
 	if (!ft_check_mapfile_format(av))
 		return (false);
 	if (!ft_check_map(av, vars))
-		return (false);
+		ft_quit(vars);
 	if (!ft_check_walls(vars))
-		return (false);
+		ft_quit(vars);
 	if (!ft_check_content(vars))
 		return (false);
 	return (true);

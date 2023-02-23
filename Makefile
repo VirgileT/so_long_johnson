@@ -13,22 +13,12 @@ PATH_SRCS 		+= srcs/
 
 SRCS			+= so_long.c
 SRCS			+= moves.c
-SRCS			+= errors.c
-SRCS			+= map.c
-SRCS			+= map_utils.c
+SRCS			+= shut_down.c
+SRCS			+= parsing.c
+SRCS			+= parsing_utils.c
 SRCS			+= pathfinding.c
 SRCS 			+= print_map.c
-#SRCS			+= set_sprites.c
 SRCS			+= moves_utils.c
-#SRCS			+= check_map.c
-#SRCS			+= free_destroy_close.c
-#SRCS			+= update_key_hook.c
-#SRCS			+= args_check.c
-#SRCS			+= args_check_map.c
-#SRCS			+= args_check_files.c
-#SRCS			+= backtracking_check_map.c
-#SRCS			+= backtracking_check_map_init.c
-#SRCS			+= init_mlx.c
 
 vpath %.c $(PATH_SRCS)
 
@@ -107,7 +97,10 @@ norm:
 
 .PHONY: all clean fclean re del test full_test
 
-# variables spéciales
+# CIBLE > DEPENDANCES > REGLES
+
+# variables spéciales :
+
 # $+ idem que $^ mais avec les doublons
 # $| idem que $^ mais avec les doublons et triés
 # $% nom de la cible d'une règle de substitution
@@ -118,4 +111,3 @@ norm:
 # $@ nom de la cible d'une règle de substitution
 # $? liste des dépendances plus récentes que la cible d'une règle de substitution
 # $* nom du fichier sans son extension d'une règle de substitution
-# CIBLE > DEPENDANCES > REGLES

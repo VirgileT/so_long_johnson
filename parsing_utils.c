@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vtestut <vtestut@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 14:59:51 by vtestut           #+#    #+#             */
-/*   Updated: 2023/02/23 15:05:20 by vtestut          ###   ########.fr       */
+/*   Updated: 2023/02/23 18:29:51 by vtestut          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_check_content2(t_vars *vars)
 	}
 }
 
-bool	ft_check_map2(char *full, int read_return)
+bool	ft_check_map2(char *full, int read_return, t_vars *vars)
 {
 	int	i;
 
@@ -59,20 +59,50 @@ bool	ft_check_map2(char *full, int read_return)
 	{
 		if (full[0] == '\n')
 		{
-			free(full);
-			return (ft_error("empty line at begining of map file"), false);
+			ft_error("empty line at begining of map file");
+			ft_quit_early(vars, full);
 		}
 		else if (full[i] == '\n' && full[i + 1] == '\n')
 		{	
-			free(full);
-			return (ft_error("empty line in middle of map file"), false);
+			ft_error("empty line in middle of map file");
+			ft_quit_early(vars, full);
 		}
 		else if (full[read_return - 1] == '\n')
 		{
-			free(full);
-			return (ft_error("empty line at end of map file"), false);
+			ft_error("empty line at end of map file");
+			ft_quit_early(vars, full);
 		}
 		i++;
 	}
 	return (true);
+}
+
+bool	ft_invalid_arg_num(int ac)
+{
+	if (ac > 2)
+	{
+		ft_error("too many arguments");
+		return (false);
+	}
+	else if (ac < 2)
+	{
+		ft_error("argument missing");
+		return (false);
+	}
+	else
+		return (true);
+}
+
+bool	ft_check_mapfile_format(char **av)
+{
+	int	map_file_len;
+
+	map_file_len = ft_strlen(av[1]);
+	if (!ft_strnstr(&av[1][map_file_len - 4], ".ber", 4))
+	{
+		ft_error("Wrong map file format : [.ber] file is required");
+		return (false);
+	}
+	else
+		return (true);
 }
